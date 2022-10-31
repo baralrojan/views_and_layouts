@@ -14,7 +14,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val score = arrayOf("1", "2", "3")
+
+        //Create array of basketball points
+        val score = arrayOf("0","1", "2", "3")
         val spinner1 = findViewById<Spinner>(R.id.result1)
         val spinner2 = findViewById<Spinner>(R.id.result2)
         var arrayAdapter = ArrayAdapter(
@@ -28,38 +30,92 @@ class MainActivity : AppCompatActivity() {
         var score2 = findViewById<TextView>(R.id.score2)
 
 
-
-        var button1 = findViewById<Button>(R.id.btn1)
-        button1.setOnClickListener {
+        //Increase score if first score(+) is clicked
+        var btn1_increase = findViewById<Button>(R.id.btn1_increase)
+        btn1_increase.setOnClickListener {
             num1++
            score1.setText("$num1")
         }
 
-        var button2 = findViewById<Button>(R.id.btn2)
-        button2.setOnClickListener {
+        //Decrease score if first score(-) is clicked
+        var btn1_decrease = findViewById<Button>(R.id.btn1_decrease)
+        btn1_decrease.setOnClickListener {
+            num1--
+            if(num1<0){
+                //If score is less than zero set it to 0
+                score1.setText("0")
+                num1 = 0
+            }else{
+                score1.setText("$num1")
+            }
+        }
+
+        //Increase score if second score(+) is clicked
+        var btn2_increase = findViewById<Button>(R.id.btn2_increase)
+        btn2_increase.setOnClickListener {
             num2++
             score2.setText("$num2")
         }
 
-//            spinner1.onItemSelectedListener = object :
-//
-//        AdapterView.OnItemSelectedListener {
-//                override fun onItemSelected(
-//                    parent: AdapterView<*>?,
-//                    view: View?,
-//                    position: Int,
-//                    id: Long
-//                ) {
-//                    var position_val = score[position]+"$num1"
-//                    score1.text = position_val
-//                }
-//
-//                override fun onNothingSelected(parent: AdapterView<*>?) {
-//                    TODO("Not yet implemented")
-//                }
-//
-//            }
+        //Decrease score if second score(-) is clicked
+        var btn2_decrease = findViewById<Button>(R.id.btn2_decrease)
+        btn2_decrease.setOnClickListener {
+            num2--
+            if(num2<0){
+                //If score is less than zero set it to 0
+                score2.setText("0")
+                num2 = 0
+            }else{
+                score2.setText("$num2")
+            }
 
+        }
+
+            spinner1.onItemSelectedListener = object :
+
+        AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    var position_val = score[position]
+                    var val_to_int = position_val.toInt()
+                    var final1 = val_to_int+num1
+                    num1 = final1
+                    score1.setText("$final1")
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
+
+
+            }
+
+        spinner2.onItemSelectedListener = object :
+
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                var position_val = score[position]
+                var val_to_int = position_val.toInt()
+                var final2 = val_to_int+num2
+                num2 = final2
+                score2.setText("$final2")
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+
+        }
 
 
             }
