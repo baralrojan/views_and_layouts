@@ -71,8 +71,11 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-            spinner1.onItemSelectedListener = object :
 
+     //update score with the help of spinner
+        //got some issued with it
+    /*
+        spinner1.onItemSelectedListener = object :
         AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
@@ -84,7 +87,7 @@ class MainActivity : AppCompatActivity() {
                     var val_to_int = position_val.toInt()
                     var final1 = val_to_int+num1
                     num1 = final1
-                    score1.setText("$final1")
+                    score1.setText("$num1")
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -107,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                 var val_to_int = position_val.toInt()
                 var final2 = val_to_int+num2
                 num2 = final2
-                score2.setText("$final2")
+                score2.setText("$num2")
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -116,6 +119,8 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+     */
 
 
             }
